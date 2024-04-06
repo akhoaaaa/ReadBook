@@ -43,7 +43,17 @@ class TheLoaiController extends Controller
         $theloai->tentheloai = $data['tentheloai'];
         $theloai->slug = $data['slug'];
         $theloai->kichhoat = $data['kichhoat'];
+        $get_image = $request->hinhanh;
+        $path = 'public/uploads/images/';
+        $get_name_image = $get_image->getClientOriginalName();
+        $name_image = current(explode('.',$get_name_image));
+        $new_image = $name_image.'-'.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+        $get_image->move($path,$new_image);
+
+        $theloai->hinhanh = $new_image;
         $theloai->save();
+
+
         return redirect()->back()->with('message','Thêm thể loại thành công');
     }
 
@@ -81,6 +91,21 @@ class TheLoaiController extends Controller
         $theloai->tentheloai = $data['tentheloai'];
         $theloai->slug = $data['slug'];
         $theloai->kichhoat = $data['kichhoat'];
+        $get_image = $request->hinhanh;
+        if ($get_image){
+            $path = 'public/uploads/images/'.$theloai->hinhanh;
+            if (file_exists($path)){
+                unlink($path);
+            }
+
+            $path = 'public/uploads/images/';
+
+            $get_name_image = $get_image->getClientOriginalName();
+            $name_image = current(explode('.',$get_name_image));
+            $new_image = $name_image.'-'.rand(0,99).'.'.$get_image->getClientOriginalExtension();
+            $get_image->move($path,$new_image);
+            $theloai->hinhanh = $new_image;
+        }
         $theloai->save();
         return redirect()->back()->with('message','Sửa thể loại thành công');
     }
@@ -90,6 +115,14 @@ class TheLoaiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $theloai = TheLoai::find($id);
+        $path = 'public/uploads/images/'.$theloai->hinhanh;
+        if (file_exists($path)){
+            unlink($path);
+        }else{
+            $theloai->delete();
+        }
+        $theloai->delete();
+        return redirect()->back()->with('message','xóa thể loại thành công');
     }
 }

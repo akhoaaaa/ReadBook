@@ -26,7 +26,7 @@
                             </div>
                         @endif
                     </div>
-                    <form method="POST" style="margin: 20px" action="{{route('theloai.update',[$viewtheloai->id])}}">
+                    <form method="POST" style="margin: 20px" action="{{route('theloai.update',[$viewtheloai->id])}}"  enctype="multipart/form-data">
                         @method('PUT')
                         @csrf
                         <div class="mb-3">
@@ -36,6 +36,11 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Slug danh mục</label>
                             <input type="text" class="form-control" id="convert_slug"  aria-describedby="emailHelp" name="slug" placeholder="Slug thể loại...." value="{{$viewtheloai->slug}}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Hình ảnh truyện</label>
+                            <input type="file" class="form form-control"  name="hinhanh">
+                            <img src="{{asset('public/uploads/images/'.$viewtheloai->hinhanh)}}" height="150" width="150">
                         </div>
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="kichhoat">
                             @if($viewtheloai->kichhoat == 0)

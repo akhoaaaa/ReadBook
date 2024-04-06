@@ -86,7 +86,7 @@
                                 <option selected value="1">Kích hoạt </option>
                             @endif
                         </select>
-                        <button type="submit" class="btn btn-primary" name="themtruyen">Thêm</button>
+                        <button type="submit" class="btn btn-primary" name="themtruyen">Cập nhật</button>
                     </form>
                 </div>
             </div>

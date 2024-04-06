@@ -8,7 +8,7 @@
             <div class="col-md-8">
 
                 <div class="card">
-                    <div class="card-header">Thêm chapter</div>
+                    <div class="card-header">Cập nhật chapter</div>
 
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -59,7 +59,7 @@
                             @endif
 
                         </select>
-                        <button type="submit" class="btn btn-primary" name="themdanhmuc">Thêm chapter</button>
+                        <button type="submit" class="btn btn-primary" name="themdanhmuc">Cập nhật chapter</button>
                     </form>
                 </div>
             </div>

@@ -26,7 +26,7 @@
                             </div>
                         @endif
                     </div>
-                    <form method="POST" style="margin: 20px" action="{{route('theloai.store')}}">
+                    <form method="POST" enctype="multipart/form-data" style="margin: 20px" action="{{ route('theloai.store') }}">
                         @csrf
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Tên thể loại</label>
@@ -35,6 +35,10 @@
                         <div class="mb-3">
                             <label for="exampleInputEmail1" class="form-label">Slug thể loại</label>
                             <input type="text" class="form-control" id="convert_slug" aria-describedby="emailHelp" value="{{old('slug')}}" name="slug" placeholder="Slug thể loại....">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Hình ảnh truyện</label>
+                            <input type="file" class="form form-control"  name="hinhanh">
                         </div>
                         <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="kichhoat">
                             <option value="0">Không kích hoạt</option>

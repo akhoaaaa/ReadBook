@@ -9,7 +9,7 @@ class TheLoai extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'tentheloai','slug','kichhoat'
+        'tentheloai','slug','hinhanh','kichhoat'
     ];
     public $timestamps = false;
     protected $table = 'theloai';

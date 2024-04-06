@@ -24,64 +24,21 @@
                         <div class="latest-product__text">
                             <h4>Truyện mới nhất</h4>
                             <div class="latest-product__slider owl-carousel">
+                            @foreach($truyenmoi as $key => $trmoi)
+
                                 <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
+                                    <a href="{{route('truyen-tranh',[$trmoi->slug_truyen])}}" class="latest-product__item">
                                         <div class="latest-product__item__pic">
-                                            <img src="{{asset('public/uploads/images/usericon-21.png')}}" alt="">
+                                            <img src="{{asset('public/uploads/images/'.$trmoi->hinhanh)}}" alt="">
                                         </div>
                                         <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="{{asset('public/uploads/images/usericon-21.png')}}" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
+                                            <h6>{{$trmoi->tentruyen}}</h6>
+                                            <span>{{$trmoi->gia}}</span>
                                         </div>
                                     </a>
                                 </div>
-                                <div class="latest-prdouct__slider__item">
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-1.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-2.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="latest-product__item">
-                                        <div class="latest-product__item__pic">
-                                            <img src="img/latest-product/lp-3.jpg" alt="">
-                                        </div>
-                                        <div class="latest-product__item__text">
-                                            <h6>Crab Pool Security</h6>
-                                            <span>$30.00</span>
-                                        </div>
-                                    </a>
-                                </div>
+                                @endforeach
+
                             </div>
                         </div>
                     </div>
@@ -114,31 +71,31 @@
                 </div>
                 <div class="row">
                     @php
-                        $count = count($truyen);
+                    $count = count($truyen);
                     @endphp
                     @if($count == 0)
-                        <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="col-lg-4 col-md-6 col-sm-6">
 
                         <p>Truyện đang cập nhật....</p>
-                        </div>
+                    </div>
                     @else
-                        @foreach($truyen as $key => $tr)
-                            <div class="col-lg-4 col-md-6 col-sm-6">
-                                <div class="product__item">
-                                    <div class="product__item__pic set-bg" data-setbg="{{asset('public/uploads/images/'.$tr->hinhanh)}}">
-                                        <ul class="product__item__pic__hover">
-                                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="product__item__text">
-                                        <h6><a href="{{route('truyen-tranh',[$tr->slug_truyen])}}">{{$tr->tentruyen}}</a></h6>
-                                        <h5><i class="fa fa-eye"></i> 15000</h5>
-                                    </div>
-                                </div>
+                    @foreach($truyen as $key => $tr)
+                    <div class="col-lg-4 col-md-6 col-sm-6">
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('public/uploads/images/'.$tr->hinhanh)}}">
+                                <ul class="product__item__pic__hover">
+                                    <li><a href="#"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+                                </ul>
                             </div>
-                        @endforeach
+                            <div class="product__item__text">
+                                <h6><a href="{{route('truyen-tranh',[$tr->slug_truyen])}}">{{$tr->tentruyen}}</a></h6>
+                                <h5><i class="fa fa-eye"></i> 15000</h5>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
                     @endif
 
                 </div>
